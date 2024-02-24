@@ -25,7 +25,7 @@ public class cls_operaciones {
             this.resultadoFlt = numero1Flt * numero2Flt;
             break;
             case 3:
-            if (numero2Flt == 0) {
+            if (numero1Flt == 0) {
                 JOptionPane.showMessageDialog(null, "Operacion no es posible");
             }else{
                 this.resultadoFlt = numero1Flt / numero2Flt;
@@ -38,6 +38,32 @@ public class cls_operaciones {
     }
 
 
+    public float getResultadoFlt() {
+        return resultadoFlt;
+    }
+
+
+    public void setResultadoFlt(float resultadoFlt) {
+        this.resultadoFlt = resultadoFlt;
+    }
+
+
+    public float getNumero1Flt() {
+        return numero1Flt;
+    }
+
+
+    public float getNumero2Flt() {
+        return numero2Flt;
+    }
+
+
+    public int getOperacionesInt() {
+        return operacionesInt;
+    }
+
+
+    
     
 
 }

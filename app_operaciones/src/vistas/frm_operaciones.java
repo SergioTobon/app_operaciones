@@ -4,15 +4,21 @@
  */
 package vistas;
 
+import java.util.LinkedList;
+import javax.swing.JOptionPane;
+import logica.cls_operaciones;
+
 /**
  *
  * @author TOBON
  */
 public class frm_operaciones extends javax.swing.JFrame {
-
-    /**
-     * Creates new form frm_operaciones
-     */
+    
+    LinkedList<cls_operaciones> operaciones = new LinkedList<>();
+    int posInt = 0;
+    
+    
+    
     public frm_operaciones() {
         initComponents();
     }
@@ -44,6 +50,7 @@ public class frm_operaciones extends javax.swing.JFrame {
         txt_resultado = new javax.swing.JTextField();
         btn_nuevo = new javax.swing.JButton();
         btn_calcular = new javax.swing.JButton();
+        btn_mostrar = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -156,6 +163,11 @@ public class frm_operaciones extends javax.swing.JFrame {
 
         txt_resultado.setEditable(false);
         txt_resultado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_resultado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_resultadoActionPerformed(evt);
+            }
+        });
 
         btn_nuevo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn_nuevo.setText("Nuevo");
@@ -170,6 +182,13 @@ public class frm_operaciones extends javax.swing.JFrame {
         btn_calcular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_calcularActionPerformed(evt);
+            }
+        });
+
+        btn_mostrar.setText("Operaciones realizadas");
+        btn_mostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_mostrarActionPerformed(evt);
             }
         });
 
@@ -196,41 +215,43 @@ public class frm_operaciones extends javax.swing.JFrame {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txt_resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbx_operacion, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_calcular)
-                    .addComponent(btn_nuevo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_mostrar)
+                    .addComponent(btn_calcular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_nuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(42, 42, 42))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_x)
-                    .addComponent(txt_numero1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(21, 21, 21)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_x)
+                            .addComponent(txt_numero1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btn_mostrar)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_x2)
-                            .addComponent(txt_numero2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(btn_nuevo)))
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+                            .addComponent(txt_numero2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_operaciones)
-                            .addComponent(cbx_operacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cbx_operacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_x3)
+                            .addComponent(txt_resultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(btn_calcular)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_x3)
-                    .addComponent(txt_resultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_calcular)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_nuevo)))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
@@ -267,8 +288,20 @@ public class frm_operaciones extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbx_operacionActionPerformed
 
+    private void fnt_calcular(float numero1, float numero2, int operacion){
+        operaciones.add(new cls_operaciones(numero1,numero2,operacion));
+        txt_resultado.setText("" + operaciones.get(posInt).getResultadoFlt());
+        JOptionPane.showConfirmDialog(null, "Registro exitoso");
+        posInt+=1;              
+    }
+    
+    
     private void btn_calcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_calcularActionPerformed
-        // TODO add your handling code here:
+            // TODO add your handling code here:
+            fnt_calcular(Float.parseFloat(txt_numero1.getText()),
+                    Float.parseFloat(txt_numero1.getText()),
+                    cbx_operacion.getSelectedIndex());
+            
     }//GEN-LAST:event_btn_calcularActionPerformed
 
     private void txt_numero1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_numero1ActionPerformed
@@ -288,6 +321,30 @@ public class frm_operaciones extends javax.swing.JFrame {
         
         fnt_limpiar();
     }//GEN-LAST:event_btn_nuevoActionPerformed
+    
+    private void fnt_mostrar(){
+        String opStr = "";
+        for(int i = 0; i < operaciones.size(); i++){
+            if(operaciones.get(i).getOperacionesInt() == 0){ opStr = "SUMA";}
+            if(operaciones.get(i).getOperacionesInt() == 1){ opStr = "RESTA"; }
+            if(operaciones.get(i).getOperacionesInt() == 2){ opStr = "MULTIPLICACION";}
+            if(operaciones.get(i).getOperacionesInt() == 3){ opStr = "DIVISION";}
+            
+            JOptionPane.showConfirmDialog(null, "OPERACIÓN" + (i+1) + 
+                    "\nPrimer numero: " + operaciones.get(i).getNumero1Flt() + "" +
+                    "\nSegundo numero " + operaciones.get(i).getNumero2Flt() + "\n" +
+                    "Operacion: " + opStr + "\nResultado " + operaciones.get(i).getResultadoFlt());
+        }
+    }
+    
+    private void btn_mostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mostrarActionPerformed
+        // TODO add your handling code here:
+        fnt_mostrar();
+    }//GEN-LAST:event_btn_mostrarActionPerformed
+
+    private void txt_resultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_resultadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_resultadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -326,6 +383,7 @@ public class frm_operaciones extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_calcular;
+    private javax.swing.JButton btn_mostrar;
     private javax.swing.JButton btn_nuevo;
     private javax.swing.JComboBox<String> cbx_operacion;
     private javax.swing.JLabel jLabel1;
